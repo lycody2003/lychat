@@ -1,0 +1,42 @@
+name: lychat
+
+services:
+
+  mongo:
+    type: database
+    image: mongo:7
+    port: 27017
+
+    # security:
+    #   username: lycody
+    #   password: Admin@123
+
+    storage:
+      enabled: true
+      size: 10Gi
+      mountPath: /data/db
+
+  redis:
+    type: cache
+    image: redis:7-alpine
+    port: 6379
+
+    # security:
+    #   username: lycody
+    #   password: Admin@123
+
+  api:
+    type: application
+
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+    port: 5008
+    replicas: 1
+
+    env:
+      NODE_ENV: production
+      PORT: "5008"
+      MONGO_URI: ${mongo.url}
+      REDIS_URL: ${redis.url}

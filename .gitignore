@@ -1,0 +1,35 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+**/.env.example
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# Logs
+*.log
+logs/
+
+# Testing
+coverage/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Infrastructure - exclude from main repository
+infrastructure/
